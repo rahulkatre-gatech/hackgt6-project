@@ -34,8 +34,8 @@ while(True):
 
     # Display the resulting frames
     # cv2.imshow('frame', frame) 
-    # cv2.imshow('Mask', cv2.flip(mask, 1)) 
-    cv2.imshow('result', cv2.flip(result, 1))
+    cv2.imshow('Mask', cv2.flip(mask, 1)) 
+    # cv2.imshow('result', cv2.flip(result, 1))
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
