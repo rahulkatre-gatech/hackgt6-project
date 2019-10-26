@@ -2,11 +2,15 @@ import math
 import numpy as np
 import cv2
 
+import matplotlib.pyplot as plt
+
 cap = cv2.VideoCapture(0)
 
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
+
+    imgarr = plt.subplots(1, 3)[1]
 
     # Our operations on the frame come here
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -38,9 +42,9 @@ while(True):
 
     # Display the resulting frames
     # cv2.imshow('frame', frame) 
-    cv2.imshow('Mask', cv2.flip(mask, 1)) 
+    cv2.imshow('Mask', cv2.flip(mask, 1))
     # cv2.imshow('result', cv2.flip(result, 1))
-    
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
