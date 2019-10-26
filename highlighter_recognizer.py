@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import cv2
 
@@ -24,10 +25,13 @@ while(True):
     contours = cv2.findContours(image = mask, mode = cv2.RETR_EXTERNAL, method = cv2.CHAIN_APPROX_SIMPLE)[0]
     cv2.drawContours(image = mask, contours = contours, contourIdx = -1, color = (0, 0, 255), thickness = 5)
     
-    for contour in contours:
-        if 200 < cv2.contourArea(contour)<5000:
-            cv2.drawContours(mask,[contour],0,255,-1)
+    x_vals = []
+    if cv2.findNonZero(mask) is not None:
+        x_vals.append(cv2.findNonZero(mask)[0][0][0])
+    vals = np.array(x_vals)
 
+    if not math.isnan(np.median(vals)):
+        print(int(np.median(vals)))
 
     # The black region in the mask has the value of 0, so when multiplied with original image removes all non-matching regions 
     # result = cv2.bitwise_and(frame, frame, mask = mask) 
